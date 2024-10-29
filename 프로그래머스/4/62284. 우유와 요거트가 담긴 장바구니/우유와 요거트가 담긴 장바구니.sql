@@ -1,0 +1,13 @@
+-- 코드를 입력하세요
+select M.CART_id
+from (SELECT CART_id
+FROM CART_PRODUCTS
+WHERE NAME = 'Milk') m inner join
+(SELECT CART_id
+FROM CART_PRODUCTS
+WHERE NAME = 'Yogurt') Y
+ON M.CART_ID = Y.CART_ID
+
+ORDER BY 1
+
+
