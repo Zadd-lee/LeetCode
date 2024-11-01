@@ -1,0 +1,10 @@
+-- 코드를 입력하세요
+SELECT A.AUTHOR_ID,A.AUTHOR_NAME,B.CATEGORY,SUM(B.TOTAL_SALES) AS TOTAL_SALES
+FROM AUTHOR A INNER JOIN (SELECT AUTHOR_ID,CATEGORY,PRICE * SALES AS TOTAL_SALES
+                          FROM BOOK B INNER JOIN BOOK_SALES S ON B.BOOK_ID=S.BOOK_ID
+                          WHERE DATE_FORMAT(S.SALES_DATE,'%Y%m')='202201') B 
+                          ON A.AUTHOR_ID = B.AUTHOR_ID
+                          GROUP BY 1,3
+                          ORDER BY 1,3 DESC
+
+
